@@ -30,11 +30,11 @@ const MainHeader = () => {
         <p id="twitter">Emmanuel</p>
         <p id="slack">Immanuel1️⃣</p>
       </div>
-      <button className="share-icon__btn">
+      <button className="btn__share">
         <ShareIcon className={"share-icon"} />
         <span className="share-icon__tooltip">Share Link</span>
       </button>
-      <button className="more-icon__btn">
+      <button className="btn__more">
         <MoreIcon className={"more-icon"} />
       </button>
     </header>

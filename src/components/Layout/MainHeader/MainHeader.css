@@ -40,7 +40,7 @@ header {
   margin: 0;
 }
 
-.share-icon__btn {
+.btn__share {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,12 +66,12 @@ header {
   display: none;
 }
 
-.more-icon__btn {
+.btn__more {
   display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .more-icon__btn {
+  .btn__more {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,15 +85,15 @@ header {
     background-color: inherit;
   }
 
-  .share-icon__btn {
+  .btn__share {
     display: none;
   }
 }
 
-.more-icon__btn:hover,
-.more-icon__btn:active,
-.share-icon__btn:hover,
-.share-icon__btn:active {
+.btn__more:hover,
+.btn__more:active,
+.btn__share:hover,
+.btn__share:active {
   background-color: #f9fafb;
 }
 
