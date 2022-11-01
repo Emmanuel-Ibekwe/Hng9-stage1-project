@@ -106,7 +106,7 @@ header {
 
 .share-icon__tooltip {
   visibility: hidden;
-  width: 120px;
+  width: 84px;
   background-color: black;
   color: #fff;
   font-size: 12px;
@@ -129,6 +129,6 @@ header {
   border-style: solid;
   border-color: transparent transparent transparent black;
 }
-.share-icon__box:hover .share-icon__tooltip {
+.btn__share:hover .share-icon__tooltip {
   visibility: visible;
 }
