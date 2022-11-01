@@ -1,0 +1,10 @@
+.link-section {
+  margin: 1rem auto;
+  width: 45rem;
+  max-width: 95%;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+}
