@@ -14,27 +14,28 @@ const linkData = [
     url: "http://books.zuri.team",
     title: "Zuri Books",
     subtext:
-      "From Zero to Hero books on coding and design. Get yourself one and turn yourself into a coding/design champion!!!",
+      "Zero to Hero books on coding and design. Get yourself one and turn yourself into a coding/design champion!!!",
   },
   {
     id: "book__python",
     url: `https://books.zuri.team/python-for-beginners?ref_id=${refId}`,
     title: "Python Books",
     subtext:
-      "Click on the link and make your python coding skills as sleek and smooth as a python!!",
+      "Click here and get expert-revised books that will make your python skills as sleek and smooth as python!!",
   },
   {
     id: "pitch",
     url: "https://background.zuri.team",
     title: "Background Check for Coders",
-    subtext: "Hello world",
+    subtext:
+      "Tired of non-coders masquerading as pros? No problemo! We got you covered. Hit the link and watch as your background check issues get checked off!!!",
   },
   {
     id: "book__design",
     url: "https://books.zuri.team/design-rules",
     title: "Design Books",
     subtext:
-      "Are you a frontend developer? A UI/UX designer? Or designer of any sort? Click on the link and get the STANDARD design rules and become a pro, bro.",
+      "Are you a frontend developer? A UI/UX designer? Designer of any sort? Click on the link and get the rules to design like a pro!!!",
   },
 ];
 
