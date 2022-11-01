@@ -1,0 +1,49 @@
+.footer {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem auto;
+  padding-top: 2rem;
+  border-top: 1px solid #d0d5dd;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 95%;
+    padding-left: 0.5rem;
+  }
+
+  .footer div {
+    flex: 100%;
+  }
+}
+
+.dot {
+  color: red;
+}
+
+.footer div {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.first-column {
+  font-weight: bold;
+}
+
+.middle-column {
+  color: #667085;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  flex: 60%;
+}
+
+.ingressive__logo {
+  width: 8rem;
+  height: 2rem;
+}
