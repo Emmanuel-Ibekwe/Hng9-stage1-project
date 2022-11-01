@@ -11,7 +11,11 @@ const Footer = () => {
         <small>HNG Internship 9 Frontend Task</small>
       </div>
       <div className="ingressive__logo--div">
-        <img className="ingressive__logo" src={IngressiveLogo} />
+        <img
+          className="ingressive__logo"
+          alt="ingressive__logo"
+          src={IngressiveLogo}
+        />
       </div>
     </div>
   );

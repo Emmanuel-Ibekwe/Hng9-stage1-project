@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./MainHeader.css";
 import profileImg from "../../../assets/profile__img.jpeg";
 import ProfileImgOverlay from "./ProfileImgOverlay";
@@ -63,7 +63,7 @@ const MainHeader = () => {
         onMouseEnter={mouseEnterHandler}
         onMouseLeave={mouseLeaveHandler}
       >
-        <img id="profile__img" src={profileImg} />
+        <img id="profile__img" src={profileImg} alt="profile-img" />
         {imgOverlay && <ProfileImgOverlay />}
       </div>
       <div className="profile__details">
