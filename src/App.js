@@ -1,11 +1,14 @@
 import "./App.css";
+import SocialIcons from "./components/Icons/SocialIcons";
 import Layout from "./components/Layout/Layout";
+import LinkList from "./components/Links/LinkList";
 
 function App() {
   return (
-    <div className="App">
-      <Layout />
-    </div>
+    <Layout>
+      <LinkList />
+      <SocialIcons />
+    </Layout>
   );
 }
 

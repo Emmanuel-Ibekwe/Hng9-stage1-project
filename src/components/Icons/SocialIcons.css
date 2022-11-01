@@ -1,0 +1,18 @@
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+.social-icons svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.social-icons svg:hover,
+.social-icons svg:active {
+  opacity: 0.5;
+}
