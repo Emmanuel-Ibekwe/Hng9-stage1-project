@@ -5,6 +5,7 @@ const LinkItem = (props) => {
     <li>
       <a href={props.url} id={props.id} target="__blank">
         {props.title}
+        <p className="subtext">{props.subtext}</p>
       </a>
     </li>
   );
