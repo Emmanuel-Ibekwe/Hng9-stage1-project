@@ -95,6 +95,11 @@ const ContactForm = () => {
     });
   };
 
+  const emailInputBlurHandler = (event) => {
+    dispatchInputIsTouched({ type: "emailInput is touched" });
+    dispatchEmailAction({ type: "input blur" });
+  };
+
   const messsageInputChangeHandler = (event) => {
     dispatchInputIsTouched({ type: "messageInput is touched" });
     dispatchMessageAction({
@@ -143,6 +148,7 @@ const ContactForm = () => {
           placeholder="yourname@email.com"
           hint="Email must contain '@'"
           onChange={emailInputChangeHandler}
+          onBlur={emailInputBlurHandler}
         />
 
         <div className="message__div">
