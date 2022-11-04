@@ -87,6 +87,14 @@ const ContactForm = () => {
     }
   );
 
+  const emailInputChangeHandler = (event) => {
+    dispatchInputIsTouched({ type: "emailInput is touched" });
+    dispatchEmailAction({
+      type: "user entering input",
+      val: event.target.value,
+    });
+  };
+
   const messsageInputChangeHandler = (event) => {
     dispatchInputIsTouched({ type: "messageInput is touched" });
     dispatchMessageAction({
@@ -134,6 +142,7 @@ const ContactForm = () => {
           label="Email"
           placeholder="yourname@email.com"
           hint="Email must contain '@'"
+          onChange={emailInputChangeHandler}
         />
 
         <div className="message__div">
