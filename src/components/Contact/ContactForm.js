@@ -1,3 +1,4 @@
+import { useReducer } from "react";
 import "./ContactForm.css";
 import Input from "../UI/Input";
 
@@ -5,7 +6,50 @@ const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
 const name = "Immanuel";
 
+const inputIsTouchedReducer = (state, action) => {
+  if (action.type === "emailInput is touched") {
+    return {
+      emailInputIsTouched: true,
+      messageInputIsTouched: state.messageInputIsTouched,
+      checkBoxInputIsTouched: state.checkBoxInputIsTouched,
+    };
+  }
+
+  if (action.type === "messageInput is touched") {
+    return {
+      emailInputIsTouched: state.emailInputIsTouched,
+      messageInputIsTouched: true,
+      checkBoxInputIsTouched: state.checkBoxInputIsTouched,
+    };
+  }
+
+  if (action.type === "checkbox is touched") {
+    return {
+      emailInputIsTouched: state.emailInputIsTouched,
+      messageInputIsTouched: state.messageInputIsTouched,
+      checkBoxInputIsTouched: true,
+    };
+  }
+
+  if (action.type === "submit button is touched") {
+    return {
+      emailInputIsTouched: true,
+      messageInputIsTouched: true,
+      checkBoxInputIsTouched: true,
+    };
+  }
+};
+
 const ContactForm = () => {
+  const [inputIsTouchedState, dispatchInputIsTouched] = useReducer(
+    inputIsTouchedReducer,
+    {
+      emailInputIsTouched: false,
+      messageInputIsTouched: false,
+      checkBoxInputIsTouched: false,
+    }
+  );
+
   return (
     <div className="contact-form">
       <h2>Contact Me</h2>
@@ -40,7 +84,9 @@ const ContactForm = () => {
         <div className="message__div">
           <label htmlFor="message"></label>
           <textarea id="message" placeholder={textAreaPlaceHolder}></textarea>
-          {<p>Please enter a message</p>}
+          {inputIsTouchedState.messageInputIsTouched && (
+            <p>Please enter a message</p>
+          )}
         </div>
 
         <div className="checkbox--div">
