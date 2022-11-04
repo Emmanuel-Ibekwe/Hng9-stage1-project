@@ -6,6 +6,18 @@ const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
 const name = "Immanuel";
 
+const emailInputReducer = (state, action) => {
+  if (action.type === "user entering input") {
+    return { value: action.val, isValid: action.val.includes("@") };
+  }
+
+  if (action.type === "input blur") {
+    return { value: state.value, isValid: state.value.includes("@") };
+  }
+
+  return { value: "", isValid: false };
+};
+
 const messageInputReducer = (state, action) => {
   if (action.type === "user entering input") {
     return { value: action.val, isValid: action.val.trim().length > 0 };
@@ -53,6 +65,11 @@ const inputIsTouchedReducer = (state, action) => {
 };
 
 const ContactForm = () => {
+  const [emailInputState, dispatchEmailAction] = useReducer(emailInputReducer, {
+    value: "",
+    isValid: false,
+  });
+
   const [messageInputState, dispatchMessageAction] = useReducer(
     messageInputReducer,
     {
@@ -76,6 +93,11 @@ const ContactForm = () => {
       type: "user entering input",
       val: event.target.value,
     });
+  };
+
+  const messageInputBlurHandler = () => {
+    dispatchInputIsTouched({ type: "messageInput is touched" });
+    dispatchEmailAction({ type: "input blur" });
   };
 
   const formSubmissionHandler = (event) => {
@@ -120,10 +142,10 @@ const ContactForm = () => {
             id="message"
             placeholder={textAreaPlaceHolder}
             onChange={messsageInputChangeHandler}
+            onBlur={messageInputBlurHandler}
           ></textarea>
-          {inputIsTouchedState.messageInputIsTouched && (
-            <p>Please enter a message</p>
-          )}
+          {inputIsTouchedState.messageInputIsTouched &&
+            !messageInputState.isValid && <p>Please enter a message</p>}
         </div>
 
         <div className="checkbox--div">
