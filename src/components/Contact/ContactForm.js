@@ -1,3 +1,4 @@
+import "./ContactForm.css";
 import Input from "../UI/Input";
 
 const textAreaPlaceHolder =
@@ -6,7 +7,7 @@ const name = "Immanuel";
 
 const ContactForm = () => {
   return (
-    <div>
+    <div className="contact-form">
       <h2>Contact Me</h2>
       <p>Hi there, contact me to ask me about anything you have in mind.</p>
       <form>
