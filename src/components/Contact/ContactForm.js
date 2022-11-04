@@ -6,6 +6,18 @@ const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
 const name = "Immanuel";
 
+const messageInputReducer = (state, action) => {
+  if (action.type === "user entering input") {
+    return { value: action.val, isValid: action.val.trim().length > 0 };
+  }
+
+  if (action.type === "input blur") {
+    return { value: state.value, isValid: state.value.trim().length > 0 };
+  }
+
+  return { value: "", isValid: false };
+};
+
 const inputIsTouchedReducer = (state, action) => {
   if (action.type === "emailInput is touched") {
     return {
@@ -41,6 +53,14 @@ const inputIsTouchedReducer = (state, action) => {
 };
 
 const ContactForm = () => {
+  const [messageInputState, dispatchMessageAction] = useReducer(
+    messageInputReducer,
+    {
+      value: "",
+      isValid: false,
+    }
+  );
+
   const [inputIsTouchedState, dispatchInputIsTouched] = useReducer(
     inputIsTouchedReducer,
     {
