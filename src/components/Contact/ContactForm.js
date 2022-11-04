@@ -97,7 +97,7 @@ const ContactForm = () => {
 
   const messageInputBlurHandler = () => {
     dispatchInputIsTouched({ type: "messageInput is touched" });
-    dispatchEmailAction({ type: "input blur" });
+    dispatchMessageAction({ type: "input blur" });
   };
 
   const formSubmissionHandler = (event) => {
