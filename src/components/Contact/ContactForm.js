@@ -147,6 +147,9 @@ const ContactForm = () => {
           label="Email"
           placeholder="yourname@email.com"
           hint="Email must contain '@'"
+          inputIsInValid={
+            inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid
+          }
           onChange={emailInputChangeHandler}
           onBlur={emailInputBlurHandler}
         />
