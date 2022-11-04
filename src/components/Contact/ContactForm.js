@@ -50,11 +50,16 @@ const ContactForm = () => {
     }
   );
 
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    dispatchInputIsTouched({ type: "submit button is touched" });
+  };
+
   return (
     <div className="contact-form">
       <h2>Contact Me</h2>
       <p>Hi there, contact me to ask me about anything you have in mind.</p>
-      <form>
+      <form onSubmit={formSubmissionHandler}>
         <div className="first-section">
           <Input
             className="control-alt"
