@@ -1,5 +1,6 @@
 import "./LinkList.css";
 import LinkItem from "./LinkItem";
+import RelativeLinkItem from "./RelativeLinkItem";
 
 const refId = "Immanuel";
 const linkData = [
@@ -52,6 +53,7 @@ const LinkList = () => {
             subtext={item.subtext ?? ""}
           />
         ))}
+        <RelativeLinkItem id={"contact"} url={"/contact"} title={"Contact"} />
       </ul>
     </div>
   );
