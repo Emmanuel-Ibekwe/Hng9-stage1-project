@@ -70,6 +70,14 @@ const ContactForm = () => {
     }
   );
 
+  const messsageInputChangeHandler = (event) => {
+    dispatchInputIsTouched({ type: "messageInput is touched" });
+    dispatchMessageAction({
+      type: "user entering input",
+      val: event.target.value,
+    });
+  };
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
     dispatchInputIsTouched({ type: "submit button is touched" });
@@ -108,7 +116,11 @@ const ContactForm = () => {
 
         <div className="message__div">
           <label htmlFor="message"></label>
-          <textarea id="message" placeholder={textAreaPlaceHolder}></textarea>
+          <textarea
+            id="message"
+            placeholder={textAreaPlaceHolder}
+            onChange={messsageInputChangeHandler}
+          ></textarea>
           {inputIsTouchedState.messageInputIsTouched && (
             <p>Please enter a message</p>
           )}
