@@ -22,6 +22,18 @@ const validateEmail = (email) => {
   }
 };
 
+const firstNameInputReducer = (state, action) => {
+  if (action.type === "user entering input") {
+    return { value: action.val, isValid: action.val.trim().length > 0 };
+  }
+
+  if (action.type === "input blur") {
+    return { value: state.value, isValid: state.value.trim().length > 0 };
+  }
+
+  return { value: "", isValid: false };
+};
+
 const emailInputReducer = (state, action) => {
   if (action.type === "user entering input") {
     return { value: action.val, isValid: validateEmail(action.val) };
@@ -82,8 +94,18 @@ const checkBoxInputReducer = (state, action) => {
 };
 
 const inputIsTouchedReducer = (state, action) => {
+  if (action.type === "first name input is touched") {
+    return {
+      firstNameInputIsTouched: true,
+      emailInputIsTouched: state.emailInputIsTouched,
+      messageInputIsTouched: state.messageInputIsTouched,
+      checkBoxInputIsTouched: state.checkBoxInputIsTouched,
+    };
+  }
+
   if (action.type === "emailInput is touched") {
     return {
+      firstNameInputIsTouched: state.firstNameInputIsTouched,
       emailInputIsTouched: true,
       messageInputIsTouched: state.messageInputIsTouched,
       checkBoxInputIsTouched: state.checkBoxInputIsTouched,
@@ -92,6 +114,7 @@ const inputIsTouchedReducer = (state, action) => {
 
   if (action.type === "messageInput is touched") {
     return {
+      firstNameInputIsTouched: state.firstNameInputIsTouched,
       emailInputIsTouched: state.emailInputIsTouched,
       messageInputIsTouched: true,
       checkBoxInputIsTouched: state.checkBoxInputIsTouched,
@@ -100,6 +123,7 @@ const inputIsTouchedReducer = (state, action) => {
 
   if (action.type === "checkbox is touched") {
     return {
+      firstNameInputIsTouched: state.firstNameInputIsTouched,
       emailInputIsTouched: state.emailInputIsTouched,
       messageInputIsTouched: state.messageInputIsTouched,
       checkBoxInputIsTouched: true,
@@ -108,6 +132,7 @@ const inputIsTouchedReducer = (state, action) => {
 
   if (action.type === "submit button is touched") {
     return {
+      firstNameInputIsTouched: true,
       emailInputIsTouched: true,
       messageInputIsTouched: true,
       checkBoxInputIsTouched: true,
@@ -116,6 +141,14 @@ const inputIsTouchedReducer = (state, action) => {
 };
 
 const ContactForm = () => {
+  const [firstNameInputState, dispatchFirstNameAction] = useReducer(
+    firstNameInputReducer,
+    {
+      value: "",
+      isValid: false,
+    }
+  );
+
   const [emailInputState, dispatchEmailAction] = useReducer(emailInputReducer, {
     value: "",
     isValid: false,
@@ -140,11 +173,25 @@ const ContactForm = () => {
   const [inputIsTouchedState, dispatchInputIsTouched] = useReducer(
     inputIsTouchedReducer,
     {
+      firstNameInputIsTouched: false,
       emailInputIsTouched: false,
       messageInputIsTouched: false,
       checkBoxInputIsTouched: false,
     }
   );
+
+  const firstNameChangeHandler = (event) => {
+    dispatchInputIsTouched({ type: "first name input is touched" });
+    dispatchFirstNameAction({
+      type: "user entering input",
+      val: event.target.value,
+    });
+  };
+
+  const firstNameBlurHandler = () => {
+    dispatchInputIsTouched({ type: "first name input is touched" });
+    dispatchFirstNameAction({ type: "input blur" });
+  };
 
   const emailInputChangeHandler = (event) => {
     dispatchInputIsTouched({ type: "emailInput is touched" });
@@ -204,6 +251,12 @@ const ContactForm = () => {
             id="first_name"
             label="First name"
             placeholder="Enter your first name"
+            onChange={firstNameChangeHandler}
+            onBlur={firstNameBlurHandler}
+            inputIsInValid={
+              inputIsTouchedState.firstNameInputIsTouched &&
+              !firstNameInputState.isValid
+            }
           />
 
           <Input
