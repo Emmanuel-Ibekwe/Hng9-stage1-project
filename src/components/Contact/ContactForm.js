@@ -168,6 +168,9 @@ const ContactForm = () => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
     dispatchInputIsTouched({ type: "submit button is touched" });
+    if (!checkBoxInputState.isChecked) {
+      dispatchCheckBoxAction({ type: "invalid" });
+    }
   };
 
   return (
@@ -224,12 +227,7 @@ const ContactForm = () => {
             id="checkbox"
             className={`${
               checkBoxInputState.isChecked ? "checkbox-checked" : ""
-            } ${
-              checkBoxInputState.isInvalid ||
-              inputIsTouchedState.checkBoxInputIsTouched
-                ? "checkbox-invalid"
-                : ""
-            }`}
+            } ${checkBoxInputState.isInvalid ? "checkbox-invalid" : ""}`}
             onClick={checkboxClickHandler}
           />
           <label htmlFor="checkbox">{`You agree to providing your data to ${name} who may contact you.`}</label>
