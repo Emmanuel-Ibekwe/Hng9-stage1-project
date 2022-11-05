@@ -210,7 +210,18 @@ const ContactForm = () => {
         </div>
 
         <div className="checkbox--div">
-          <input type="checkbox" id="checkbox" />
+          <input
+            type="checkbox"
+            id="checkbox"
+            className={`${
+              checkBoxInputState.isChecked ? "checkbox-checked" : ""
+            } ${
+              checkBoxInputState.isInvalid ||
+              inputIsTouchedState.checkBoxInputIsTouched
+                ? "checkbox-invalid"
+                : ""
+            }`}
+          />
           <label htmlFor="checkbox">{`You agree to providing your data to ${name} who may contact you.`}</label>
         </div>
 
