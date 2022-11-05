@@ -154,12 +154,10 @@ p {
   }
 }
 
-/* button:disabled,
-button:focus:disabled,
-button:hover:disabled,
-button:active:disabled {
-  background: #b2ddff;
-  border-color: #b2ddff;
+button:active {
+  background: #1570ef;
   color: #ffffff;
-  cursor: not-allowed;
-} */
+  border: 1px solid #1570ef;
+  box-shadow: 0px 0px 0px 4px rgba(209, 233, 255),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
