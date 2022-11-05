@@ -30,6 +30,41 @@ const messageInputReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
+const checkBoxInputReducer = (state, action) => {
+  if (action.type === "checked") {
+    return {
+      isInvalid: false,
+      isChecked: true,
+    };
+  }
+
+  if (action.type === "unchecked") {
+    return {
+      isInvalid: false,
+      isChecked: false,
+    };
+  }
+
+  if (action.type === "invalid") {
+    return {
+      isInvalid: true,
+      isChecked: false,
+    };
+  }
+
+  if (action.type === "input blur") {
+    return {
+      isInvalid: state.isInvalid,
+      isChecked: state.isChecked,
+    };
+  }
+
+  return {
+    isInvalid: false,
+    isChecked: false,
+  };
+};
+
 const inputIsTouchedReducer = (state, action) => {
   if (action.type === "emailInput is touched") {
     return {
@@ -75,6 +110,14 @@ const ContactForm = () => {
     {
       value: "",
       isValid: false,
+    }
+  );
+
+  const [checkBoxInputState, dispatchCheckBoxAction] = useReducer(
+    checkBoxInputReducer,
+    {
+      isInvalid: false,
+      isChecked: false,
     }
   );
 
