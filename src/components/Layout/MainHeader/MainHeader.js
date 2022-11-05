@@ -1,9 +1,10 @@
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import "./MainHeader.css";
 import profileImg from "../../../assets/profile__img.jpeg";
 import ProfileImgOverlay from "./ProfileImgOverlay";
 import MoreIcon from "../../Icons/MoreIcon";
 import ShareIcon from "../../Icons/ShareIcon";
+import FormContext from "../../../store/form-context";
 
 const linkCopiedReducer = (state, action) => {
   if (action.type === "btn__share clicked") {
@@ -24,6 +25,7 @@ const linkCopiedReducer = (state, action) => {
 const MainHeader = (props) => {
   const [imgOverlay, setImgOverlay] = useState(false);
   const [displayShareBtn, setdisplayShareBtn] = useState(false);
+  const formCtx = useContext(FormContext);
 
   // This usereducer and other related functions adds a copy-to-clipboard functionality to the btn__share buttton
   const [linkCopiedState, dispatchAction] = useReducer(linkCopiedReducer, {
@@ -58,7 +60,7 @@ const MainHeader = (props) => {
 
   return (
     <header>
-      {props.displayMessage && (
+      {formCtx.displayMessage && (
         <div className="success-message">message sent!</div>
       )}
       <div

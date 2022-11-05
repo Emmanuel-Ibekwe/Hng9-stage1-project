@@ -3,10 +3,10 @@ import MainHeader from "../components/Layout/MainHeader/MainHeader";
 import SocialIcons from "../components/Icons/SocialIcons";
 import LinkList from "../components/Links/LinkList";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <Fragment>
-      <MainHeader displayMessage={props.triggerDisplay} />
+      <MainHeader />
       <LinkList />
       <SocialIcons />
     </Fragment>

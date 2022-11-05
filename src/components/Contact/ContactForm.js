@@ -1,7 +1,8 @@
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import "./ContactForm.css";
 import Input from "../UI/Input";
 import { useNavigate } from "react-router-dom";
+import FormContext from "../../store/form-context";
 
 const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
@@ -178,6 +179,7 @@ const ContactForm = (props) => {
   const [formIsValid, setformIsValid] = useState(true);
   const [displaySuccessMsg, setDisplaySuccessMsg] = useState(false);
   const navigate = useNavigate();
+  const formCtx = useContext(FormContext);
 
   useEffect(() => {
     if (displaySuccessMsg) {
@@ -330,10 +332,11 @@ const ContactForm = (props) => {
     if (formIsValid) {
       console.log("success");
       setDisplaySuccessMsg(true);
-      props.onPassDisplaySuccess(displaySuccessMsg);
+      formCtx.triggerDisplayMessage();
       return;
     } else {
       console.log("failed");
+      formCtx.untriggerDisplayMessage();
       dispatchInputIsTouched({ type: "submit button is touched" });
       if (!checkBoxInputState.isChecked) {
         dispatchCheckBoxAction({ type: "invalid" });

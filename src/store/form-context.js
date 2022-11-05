@@ -1,7 +1,8 @@
 import React from "react";
 
 const FormContext = React.createContext({
-  setDisplayMessage: (val) => {},
+  triggerDisplayMessage: () => {},
+  untriggerDisplayMessage: () => {},
   displayMessage: false,
 });
 
