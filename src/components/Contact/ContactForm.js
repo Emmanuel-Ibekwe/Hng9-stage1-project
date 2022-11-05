@@ -183,7 +183,7 @@ const ContactForm = (props) => {
     if (displaySuccessMsg) {
       navigate("/home");
     }
-  }, [displaySuccessMsg]);
+  }, [displaySuccessMsg, navigate]);
 
   const [firstNameInputState, dispatchFirstNameAction] = useReducer(
     firstNameInputReducer,
@@ -304,9 +304,11 @@ const ContactForm = (props) => {
     inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
 
   useEffect(() => {
-    // scrolls to top on page load
+    // scrolls to top once page loads
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
+  useEffect(() => {
     // set the formIsValid state
     setformIsValid(
       !firstNameIsInvalid &&
