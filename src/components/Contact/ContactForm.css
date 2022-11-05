@@ -3,6 +3,7 @@
   width: 35rem;
   max-width: 95%;
   padding-bottom: 11.75rem;
+  animation: contact-form-appear 1s ease-out forwards;
 }
 
 @media screen and (max-width: 600px) {
@@ -139,6 +140,18 @@ p {
   line-height: 1.5rem;
   border-radius: 8px;
   width: 100%;
+}
+
+@keyframes contact-form-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* button:disabled,
