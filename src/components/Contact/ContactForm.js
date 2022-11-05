@@ -391,7 +391,7 @@ const ContactForm = (props) => {
         />
 
         <div className="message__div">
-          <label htmlFor="message"></label>
+          <label htmlFor="message">Message</label>
           <textarea
             id="message"
             className={`${messageIsInvalid ? "invalid" : ""}`}
