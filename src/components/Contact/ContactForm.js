@@ -6,13 +6,29 @@ const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
 const name = "Immanuel";
 
+const validateEmail = (email) => {
+  const atpos = email.indexOf("@");
+  const dotpos = email.lastIndexOf(".");
+
+  if (
+    !email.includes("@") ||
+    atpos < 1 ||
+    dotpos < atpos + 2 ||
+    dotpos + 2 >= email.length
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 const emailInputReducer = (state, action) => {
   if (action.type === "user entering input") {
-    return { value: action.val, isValid: action.val.includes("@") };
+    return { value: action.val, isValid: validateEmail(action.val) };
   }
 
   if (action.type === "input blur") {
-    return { value: state.value, isValid: state.value.includes("@") };
+    return { value: state.value, isValid: validateEmail(state.value) };
   }
 
   return { value: "", isValid: false };
