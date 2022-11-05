@@ -168,6 +168,8 @@ const inputIsTouchedReducer = (state, action) => {
 };
 
 const ContactForm = () => {
+  const [formIsValid, setformIsValid] = useState(true);
+
   const [firstNameInputState, dispatchFirstNameAction] = useReducer(
     firstNameInputReducer,
     {
@@ -283,17 +285,44 @@ const ContactForm = () => {
     inputIsTouchedState.lastNameInputIsTouched && !lastNameInputState.isValid;
   const emailIsInvalid =
     inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid;
-  const checkboxIsInvalid = checkBoxInputState.isInvalid;
   const messageIsInvalid =
     inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
 
+  useEffect(() => {
+    setformIsValid(
+      !firstNameIsInvalid &&
+        !lastNameIsInvalid &&
+        !emailIsInvalid &&
+        checkBoxInputState.isChecked &&
+        !messageIsInvalid
+    );
+  }, [
+    firstNameIsInvalid,
+    lastNameIsInvalid,
+    emailIsInvalid,
+    checkBoxInputState.isChecked,
+    messageIsInvalid,
+  ]);
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
-    dispatchInputIsTouched({ type: "submit button is touched" });
-    if (!checkBoxInputState.isChecked) {
-      dispatchCheckBoxAction({ type: "invalid" });
+    if (formIsValid) {
+      console.log("success");
+      return;
+    } else {
+      console.log("failed");
+      dispatchInputIsTouched({ type: "submit button is touched" });
+      if (!checkBoxInputState.isChecked) {
+        dispatchCheckBoxAction({ type: "invalid" });
+      }
     }
   };
+
+  // const emailIsInvalid =
+  //   inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid;
+  // const checkboxIsInvalid = checkBoxInputState.isInvalid;
+  // const messageIsInvalid =
+  //   inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
 
   return (
     <div className="contact-form">
@@ -353,7 +382,7 @@ const ContactForm = () => {
             id="checkbox"
             className={`${
               checkBoxInputState.isChecked ? "checkbox-checked" : ""
-            } ${checkboxIsInvalid ? "checkbox-invalid" : ""}`}
+            } ${checkBoxInputState.isInvalid ? "checkbox-invalid" : ""}`}
             onClick={checkboxClickHandler}
           />
           <label htmlFor="checkbox">{`You agree to providing your data to ${name} who may contact you.`}</label>
