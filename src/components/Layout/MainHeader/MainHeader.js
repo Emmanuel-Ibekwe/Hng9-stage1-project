@@ -58,6 +58,9 @@ const MainHeader = (props) => {
 
   return (
     <header>
+      {props.displayMessage && (
+        <div className="success-message">message sent!</div>
+      )}
       <div
         className="profile__img--div"
         onMouseEnter={mouseEnterHandler}

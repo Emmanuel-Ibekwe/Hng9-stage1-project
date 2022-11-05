@@ -6,7 +6,7 @@ import LinkList from "../components/Links/LinkList";
 const Home = (props) => {
   return (
     <Fragment>
-      <MainHeader displayMessage={props.displayMessageValue} />
+      <MainHeader displayMessage={props.triggerDisplay} />
       <LinkList />
       <SocialIcons />
     </Fragment>

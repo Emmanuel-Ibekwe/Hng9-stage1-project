@@ -330,6 +330,7 @@ const ContactForm = (props) => {
     if (formIsValid) {
       console.log("success");
       setDisplaySuccessMsg(true);
+      props.onPassDisplaySuccess(displaySuccessMsg);
       return;
     } else {
       console.log("failed");
