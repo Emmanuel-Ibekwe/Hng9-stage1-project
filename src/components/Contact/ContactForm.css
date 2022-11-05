@@ -12,9 +12,20 @@
   }
 }
 
-.contact-form h2,
-p {
+.contact-form h2 {
   text-align: start;
+  color: #101828;
+}
+
+.contact-form p {
+  text-align: start;
+  color: #475467;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.contact-form label {
+  color: #344054;
 }
 
 .first-section {
