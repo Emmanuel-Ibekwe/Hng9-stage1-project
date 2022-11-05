@@ -156,6 +156,15 @@ const ContactForm = () => {
     dispatchMessageAction({ type: "input blur" });
   };
 
+  const checkboxClickHandler = () => {
+    dispatchInputIsTouched({ type: "checkbox is touched" });
+    if (checkBoxInputState.isChecked) {
+      dispatchCheckBoxAction({ type: "unchecked" });
+    } else {
+      dispatchCheckBoxAction({ type: "checked" });
+    }
+  };
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
     dispatchInputIsTouched({ type: "submit button is touched" });
@@ -221,6 +230,7 @@ const ContactForm = () => {
                 ? "checkbox-invalid"
                 : ""
             }`}
+            onClick={checkboxClickHandler}
           />
           <label htmlFor="checkbox">{`You agree to providing your data to ${name} who may contact you.`}</label>
         </div>
