@@ -1,4 +1,3 @@
-import MainHeader from "./MainHeader/MainHeader";
 import "./Layout.css";
 import Footer from "./Footer/Footer";
 
