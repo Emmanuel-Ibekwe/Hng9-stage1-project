@@ -48,11 +48,17 @@ const lastNameInputReducer = (state, action) => {
 
 const emailInputReducer = (state, action) => {
   if (action.type === "user entering input") {
-    return { value: action.val, isValid: validateEmail(action.val) };
+    return {
+      value: action.val,
+      isValid: validateEmail(action.val),
+    };
   }
 
   if (action.type === "input blur") {
-    return { value: state.value, isValid: validateEmail(state.value) };
+    return {
+      value: state.value,
+      isValid: validateEmail(state.value),
+    };
   }
 
   return { value: "", isValid: false };
