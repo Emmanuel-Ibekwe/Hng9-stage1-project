@@ -217,7 +217,7 @@ const ContactForm = () => {
           type="email"
           label="Email"
           placeholder="yourname@email.com"
-          hint="Email must contain '@'"
+          hint="Your email must be in this format, 'yourname@email.com'"
           inputIsInValid={
             inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid
           }
