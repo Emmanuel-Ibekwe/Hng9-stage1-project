@@ -2,6 +2,7 @@ li {
   margin-top: 1rem;
   border-radius: 8px;
   height: 4.3rem;
+
   animation: links-appear 1s ease-out forwards;
 }
 
@@ -26,6 +27,7 @@ a:active {
 .subtext {
   padding: 0;
   margin: 0;
+  text-align: center;
   font-style: italic;
   font-weight: 200;
   font-size: 8px;
