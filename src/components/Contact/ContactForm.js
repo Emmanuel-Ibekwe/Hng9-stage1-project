@@ -277,6 +277,16 @@ const ContactForm = () => {
     }
   };
 
+  const firstNameIsInvalid =
+    inputIsTouchedState.firstNameInputIsTouched && !firstNameInputState.isValid;
+  const lastNameIsInvalid =
+    inputIsTouchedState.lastNameInputIsTouched && !lastNameInputState.isValid;
+  const emailIsInvalid =
+    inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid;
+  const checkboxIsInvalid = checkBoxInputState.isInvalid;
+  const messageIsInvalid =
+    inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
     dispatchInputIsTouched({ type: "submit button is touched" });
@@ -284,9 +294,6 @@ const ContactForm = () => {
       dispatchCheckBoxAction({ type: "invalid" });
     }
   };
-
-  const messageIsInvalid =
-    inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
 
   return (
     <div className="contact-form">
@@ -302,10 +309,7 @@ const ContactForm = () => {
             placeholder="Enter your first name"
             onChange={firstNameChangeHandler}
             onBlur={firstNameBlurHandler}
-            inputIsInValid={
-              inputIsTouchedState.firstNameInputIsTouched &&
-              !firstNameInputState.isValid
-            }
+            inputIsInValid={firstNameIsInvalid}
           />
 
           <Input
@@ -316,10 +320,7 @@ const ContactForm = () => {
             placeholder="Enter your last name"
             onChange={lastNameChangeHandler}
             onBlur={lastNameBlurHandler}
-            inputIsInValid={
-              inputIsTouchedState.lastNameInputIsTouched &&
-              !lastNameInputState.isValid
-            }
+            inputIsInValid={lastNameIsInvalid}
           />
         </div>
 
@@ -329,9 +330,7 @@ const ContactForm = () => {
           label="Email"
           placeholder="yourname@email.com"
           hint="Your email must be in this format, 'yourname@email.com'"
-          inputIsInValid={
-            inputIsTouchedState.emailInputIsTouched && !emailInputState.isValid
-          }
+          inputIsInValid={emailIsInvalid}
           onChange={emailInputChangeHandler}
           onBlur={emailInputBlurHandler}
         />
@@ -354,7 +353,7 @@ const ContactForm = () => {
             id="checkbox"
             className={`${
               checkBoxInputState.isChecked ? "checkbox-checked" : ""
-            } ${checkBoxInputState.isInvalid ? "checkbox-invalid" : ""}`}
+            } ${checkboxIsInvalid ? "checkbox-invalid" : ""}`}
             onClick={checkboxClickHandler}
           />
           <label htmlFor="checkbox">{`You agree to providing your data to ${name} who may contact you.`}</label>
