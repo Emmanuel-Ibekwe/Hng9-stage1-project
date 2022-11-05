@@ -11,6 +11,7 @@ const Input = (props) => {
         placeholder={props.placeholder}
         onChange={props.onChange}
         onBlur={props.onBlur}
+        className={`${props.inputIsInValid ? "invalid" : ""}`}
       />
       {props.inputIsInValid && <p>{props.hint}</p>}
     </div>

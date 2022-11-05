@@ -189,6 +189,9 @@ const ContactForm = () => {
     }
   };
 
+  const messageIsInvalid =
+    inputIsTouchedState.messageInputIsTouched && !messageInputState.isValid;
+
   return (
     <div className="contact-form">
       <h2>Contact Me</h2>
@@ -229,12 +232,12 @@ const ContactForm = () => {
           <label htmlFor="message"></label>
           <textarea
             id="message"
+            className={`${messageIsInvalid ? "invalid" : ""}`}
             placeholder={textAreaPlaceHolder}
             onChange={messsageInputChangeHandler}
             onBlur={messageInputBlurHandler}
           ></textarea>
-          {inputIsTouchedState.messageInputIsTouched &&
-            !messageInputState.isValid && <p>Please enter a message</p>}
+          {messageIsInvalid && <p>Please enter a message</p>}
         </div>
 
         <div className="checkbox--div">
