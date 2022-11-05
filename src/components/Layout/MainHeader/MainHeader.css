@@ -159,6 +159,12 @@ header {
   animation: success-appear 4s ease forwards;
 }
 
+@media screen and (max-width: 600px) {
+  .success-message {
+    width: 40%;
+  }
+}
+
 @keyframes success-appear {
   0% {
     transform: translateX(-100%);
