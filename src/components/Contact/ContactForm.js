@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import "./ContactForm.css";
 import Input from "../UI/Input";
+import { useNavigate } from "react-router-dom";
 
 const textAreaPlaceHolder =
   "Send me a message and I'll reply as soon as possible";
@@ -173,8 +174,16 @@ const inputIsTouchedReducer = (state, action) => {
   }
 };
 
-const ContactForm = () => {
+const ContactForm = (props) => {
   const [formIsValid, setformIsValid] = useState(true);
+  const [displaySuccessMsg, setDisplaySuccessMsg] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (displaySuccessMsg) {
+      navigate("/home");
+    }
+  }, [displaySuccessMsg]);
 
   const [firstNameInputState, dispatchFirstNameAction] = useReducer(
     firstNameInputReducer,
@@ -318,6 +327,7 @@ const ContactForm = () => {
     event.preventDefault();
     if (formIsValid) {
       console.log("success");
+      setDisplaySuccessMsg(true);
       return;
     } else {
       console.log("failed");

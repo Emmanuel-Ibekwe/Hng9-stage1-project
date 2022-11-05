@@ -21,7 +21,7 @@ const linkCopiedReducer = (state, action) => {
   }
 };
 
-const MainHeader = () => {
+const MainHeader = (props) => {
   const [imgOverlay, setImgOverlay] = useState(false);
   const [displayShareBtn, setdisplayShareBtn] = useState(false);
 
